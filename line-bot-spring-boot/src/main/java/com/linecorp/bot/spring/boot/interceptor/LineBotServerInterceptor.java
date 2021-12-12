@@ -52,6 +52,7 @@ public class LineBotServerInterceptor implements HandlerInterceptor {
 
         final HandlerMethod hm = (HandlerMethod) handler;
         final MethodParameter[] methodParameters = hm.getMethodParameters();
+        log.info("LINE Bot callback STARTING~~~~");
 
         for (MethodParameter methodParameter : methodParameters) {
             if (methodParameter.getParameterAnnotation(LineBotMessages.class) == null) {
