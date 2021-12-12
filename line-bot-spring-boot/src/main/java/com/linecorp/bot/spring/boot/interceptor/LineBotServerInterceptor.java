@@ -64,6 +64,7 @@ public class LineBotServerInterceptor implements HandlerInterceptor {
             }
             try {
                 final String signatureHeader = request.getHeader(WebhookParser.SIGNATURE_HEADER_NAME);
+                log.info("LINE Bot signature: {}", signatureHeader);
                 final byte[] payload = StreamUtils.copyToByteArray(request.getInputStream());
                 final CallbackRequest callbackRequest = webhookParser.handle(signatureHeader, payload);
                 LineBotServerArgumentProcessor.setValue(request, callbackRequest);
